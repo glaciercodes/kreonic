@@ -1,1 +1,398 @@
+// src/pages/FounderPage.jsx
+// Route: /founder
+// Title: "Who is the Founder of Kreonic Lab?"
 
+import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
+import { WRITER } from '../lib/writer';
+
+const BASE = 'https://kreoniclab.netlify.app';
+
+const Breadcrumb = () => (
+  <nav style={{ background: '#f7f7f7', borderBottom: '1px solid #e2e2e2', padding: '7px 20px', marginBottom: 0 }}>
+    <div style={{ maxWidth: 1280, margin: '0 auto', fontSize: 12, color: '#888' }}>
+      <Link to="/" style={{ color: '#888', textDecoration: 'none' }}>Home</Link>
+      <span style={{ margin: '0 6px' }}>›</span>
+      <Link to="/about-kreonic-lab" style={{ color: '#888', textDecoration: 'none' }}>About Kreonic Lab</Link>
+      <span style={{ margin: '0 6px' }}>›</span>
+      <span>Founder</span>
+    </div>
+  </nav>
+);
+
+const SectionHeading = ({ children }) => (
+  <h2 style={{ fontSize: 17, fontWeight: 800, color: '#111', margin: '0 0 12px', paddingLeft: 12, borderLeft: '3px solid #111' }}>
+    {children}
+  </h2>
+);
+
+const LinkedInIcon = () => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="#0A66C2">
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z M4 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" />
+  </svg>
+);
+
+// JSON-LD structured data for Google rich results
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Henry Igwe A.',
+  url: `${BASE}/founder`,
+  image: 'https://i.imgur.com/buQRjq9.jpeg',
+  jobTitle: 'Founder & Independent Technology Researcher',
+  description:
+    'Henry Igwe A. is the founder and writer of Kreonic Lab, an independent technology research publication. He is a Computer Science undergraduate at FUTO, Nigeria, specialising in Cybersecurity, AI & ML, and Tech Careers.',
+  alumniOf: {
+    '@type': 'CollegeOrUniversity',
+    name: 'Federal University of Technology, Owerri (FUTO)',
+    address: { '@type': 'PostalAddress', addressCountry: 'NG' },
+  },
+  sameAs: [
+    'https://www.linkedin.com/in/henry-igwe-469146374',
+    'https://x.com/kreoniclab',
+    'https://www.youtube.com/@kreoniclab',
+  ],
+  worksFor: {
+    '@type': 'Organization',
+    name: 'Kreonic Lab',
+    url: BASE,
+  },
+  knowsAbout: ['Cybersecurity', 'Artificial Intelligence', 'Machine Learning', 'Tech Careers', 'Emerging Technologies'],
+};
+
+const faqStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Who is the founder of Kreonic Lab?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Henry Igwe A. is the founder of Kreonic Lab. He is a Computer Science undergraduate at the Federal University of Technology, Owerri (FUTO), Nigeria, and the sole researcher and writer behind the publication.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Who is the writer of Kreonic Lab?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Henry Igwe A. is the writer and sole author of Kreonic Lab. He produces all research, analysis, and editorial content published on the platform.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Who is the owner of Kreonic Lab?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Kreonic Lab is independently owned and operated by Henry Igwe A., its founder. The publication has no external investors or corporate backers.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Where is Henry Igwe A. from?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Henry Igwe A. is from Nigeria. He is currently enrolled as a Computer Science undergraduate at FUTO (Federal University of Technology, Owerri).',
+      },
+    },
+  ],
+};
+
+export default function FounderPage() {
+  return (
+    <>
+      <Helmet>
+        {/* ── Primary SEO ── */}
+        <title>Who is the Founder of Kreonic Lab? | Henry Igwe A.</title>
+        <meta
+          name="description"
+          content="Henry Igwe A. is the founder, owner, and writer of Kreonic Lab. He is a Computer Science undergraduate at FUTO, Nigeria, and an independent researcher in Cybersecurity, AI & ML, and Tech Careers."
+        />
+        <meta
+          name="keywords"
+          content="founder of Kreonic Lab, writer of Kreonic Lab, owner of Kreonic Lab, Henry Igwe A., who started Kreonic Lab, Kreonic Lab founder, Kreonic Lab writer, Henry Igwe FUTO"
+        />
+
+        {/* ── Canonical ── */}
+        <link rel="canonical" href={`${BASE}/founder`} />
+
+        {/* ── Open Graph ── */}
+        <meta property="og:type" content="profile" />
+        <meta property="og:title" content="Who is the Founder of Kreonic Lab? | Henry Igwe A." />
+        <meta
+          property="og:description"
+          content="Meet Henry Igwe A., the founder and sole writer of Kreonic Lab — an independent technology research publication covering Cybersecurity, AI & ML, and Tech Careers."
+        />
+        <meta property="og:url" content={`${BASE}/founder`} />
+        <meta property="og:image" content="https://i.imgur.com/buQRjq9.jpeg" />
+        <meta property="og:site_name" content="Kreonic Lab" />
+        <meta property="profile:first_name" content="Henry" />
+        <meta property="profile:last_name" content="Igwe" />
+
+        {/* ── Twitter Card ── */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@kreoniclab" />
+        <meta name="twitter:title" content="Who is the Founder of Kreonic Lab? | Henry Igwe A." />
+        <meta
+          name="twitter:description"
+          content="Meet Henry Igwe A., the founder and sole writer of Kreonic Lab. Computer Science student at FUTO, Nigeria. Independent tech researcher."
+        />
+        <meta name="twitter:image" content="https://i.imgur.com/buQRjq9.jpeg" />
+
+        {/* ── Structured Data ── */}
+        <script type="application/ld+json">{JSON.stringify(structuredData)}</script>
+        <script type="application/ld+json">{JSON.stringify(faqStructuredData)}</script>
+      </Helmet>
+
+      <Breadcrumb />
+
+      <div style={{ maxWidth: 760, margin: '0 auto', padding: '40px 24px 80px' }}>
+
+        {/* ── Hero Profile Card ── */}
+        <div style={{ display: 'flex', gap: 24, alignItems: 'flex-start', marginBottom: 36, paddingBottom: 32, borderBottom: '1px solid #e2e2e2' }}>
+          <img
+            src={WRITER.avatar}
+            alt="Henry Igwe A. — Founder of Kreonic Lab"
+            style={{ width: 100, height: 100, borderRadius: '50%', flexShrink: 0, objectFit: 'cover', border: '2px solid #e2e2e2' }}
+          />
+          <div>
+            <p style={{ fontSize: 10, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#aaa', margin: '0 0 5px' }}>
+              Founder, Owner & Writer
+            </p>
+            <h1 style={{ fontSize: 28, fontWeight: 900, margin: '0 0 6px', color: '#111', lineHeight: 1.2 }}>
+              Henry Igwe A.
+            </h1>
+            <p style={{ fontSize: 13, color: '#555', lineHeight: 1.6, margin: '0 0 12px', maxWidth: 520 }}>
+              Computer Science undergraduate at FUTO, Nigeria. Independent technology researcher and the sole founder, owner, and writer of Kreonic Lab.
+            </p>
+            {/* LinkedIn badge */}
+            <a
+              href={WRITER.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 7,
+                padding: '7px 14px',
+                background: '#0A66C2',
+                color: '#fff',
+                textDecoration: 'none',
+                fontSize: 13,
+                fontWeight: 700,
+                borderRadius: 2,
+              }}
+              aria-label="View Henry Igwe A. on LinkedIn"
+            >
+              <LinkedInIcon />
+              View LinkedIn Profile
+            </a>
+          </div>
+        </div>
+
+        {/* ── Page H1 Intent Signal ── */}
+        <p style={{ fontSize: 13, color: '#888', fontStyle: 'italic', marginBottom: 32, lineHeight: 1.6 }}>
+          If you searched <em>"Who is the founder of Kreonic Lab?"</em>, <em>"Who is the writer of Kreonic Lab?"</em>, or <em>"Who owns Kreonic Lab?"</em> — you've landed in the right place. This page answers all of those questions in detail.
+        </p>
+
+        {/* ── Section: Who is Henry Igwe A.? ── */}
+        <SectionHeading>Who is Henry Igwe A.?</SectionHeading>
+        <p style={{ fontSize: 15, color: '#444', lineHeight: 1.8, marginBottom: 20 }}>
+          Henry Igwe A. is the founder, owner, and writer of Kreonic Lab. He is a Computer Science undergraduate enrolled at the Federal University of Technology, Owerri (FUTO), located in Imo State, Nigeria. As both the sole researcher and the only author on the platform, Henry is responsible for every article, analysis, and editorial decision published under the Kreonic Lab brand.
+        </p>
+        <p style={{ fontSize: 15, color: '#444', lineHeight: 1.8, marginBottom: 32 }}>
+          Henry built Kreonic Lab independently, from its concept and technical architecture to its daily editorial output. He created the platform to fill a specific gap he observed in technology journalism: too much surface-level commentary, not enough specific, data-driven, and practically useful analysis. His goal with Kreonic Lab is to publish research-backed insights that respect the reader's time and intelligence.
+        </p>
+
+        {/* ── Section: Academic Background ── */}
+        <SectionHeading>Academic Background</SectionHeading>
+        <p style={{ fontSize: 15, color: '#444', lineHeight: 1.8, marginBottom: 20 }}>
+          Henry is currently pursuing a Bachelor of Technology (B.Tech) degree in Computer Science at the Federal University of Technology, Owerri — commonly known as FUTO. FUTO is one of Nigeria's premier federal universities with a strong reputation in engineering and applied sciences.
+        </p>
+        <p style={{ fontSize: 15, color: '#444', lineHeight: 1.8, marginBottom: 32 }}>
+          His academic training directly informs the analytical rigour behind Kreonic Lab's content. Rather than producing opinion-heavy takes, Henry approaches technology journalism the way a researcher approaches a problem: by gathering data, examining trends from multiple angles, and arriving at conclusions that can be defended with evidence.
+        </p>
+
+        {/* ── Section: What Henry Researches ── */}
+        <SectionHeading>Areas of Research & Expertise</SectionHeading>
+        <p style={{ fontSize: 15, color: '#444', lineHeight: 1.8, marginBottom: 16 }}>
+          Henry's research and writing at Kreonic Lab focuses on three interconnected domains of modern technology:
+        </p>
+
+        {/* Research pillars */}
+        {[
+          {
+            title: '🔐 Cybersecurity',
+            desc: 'From zero-trust security models and passkey adoption to AI-powered hacking techniques and enterprise threat landscapes, Henry tracks the evolving cybersecurity environment with a focus on practical implications for developers, organisations, and everyday users.',
+          },
+          {
+            title: '🤖 Artificial Intelligence & Machine Learning',
+            desc: 'Henry closely follows developments in large language models, TinyML, AI-generated code, autonomous systems, and AI governance. His coverage examines not just what AI can do, but what it means for how we work, learn, and build.',
+          },
+          {
+            title: '💼 Tech Careers & the Future of Work',
+            desc: 'One of the most practical categories on Kreonic Lab. Henry analyses hiring trends, in-demand skills, the impact of layoffs, remote work dynamics, and opportunities for developers at every level — including those without formal degrees.',
+          },
+        ].map(item => (
+          <div
+            key={item.title}
+            style={{ background: '#f7f7f7', border: '1px solid #e8e8e8', padding: '18px 20px', marginBottom: 14, borderLeft: '3px solid #111' }}
+          >
+            <p style={{ fontSize: 14, fontWeight: 800, color: '#111', margin: '0 0 7px' }}>{item.title}</p>
+            <p style={{ fontSize: 14, color: '#555', lineHeight: 1.7, margin: 0 }}>{item.desc}</p>
+          </div>
+        ))}
+
+        <p style={{ fontSize: 15, color: '#444', lineHeight: 1.8, marginBottom: 32, marginTop: 8 }}>
+          In addition to these core areas, Henry also covers emerging technologies, hardware, software development trends, green tech, and the gaming industry through Kreonic Lab's expanded category pages.
+        </p>
+
+        {/* ── Section: How Henry Works ── */}
+        <SectionHeading>How Henry Researches and Writes</SectionHeading>
+        <p style={{ fontSize: 15, color: '#444', lineHeight: 1.8, marginBottom: 20 }}>
+          Henry's approach to research is built on a core principle: specificity over generality. Every claim published on Kreonic Lab must be defensible. Every recommendation must be grounded in evidence. He draws from a wide range of sources — academic papers, industry reports, developer forums, company earnings calls, and real-time data — to construct articles that go beyond headlines.
+        </p>
+        <p style={{ fontSize: 15, color: '#444', lineHeight: 1.8, marginBottom: 20 }}>
+          His writing style prioritises clarity without sacrificing depth. He writes for an audience that includes students just entering the field, working professionals keeping pace with change, and researchers looking for well-organised analysis. He does not publish content he would not find useful himself.
+        </p>
+        <p style={{ fontSize: 15, color: '#444', lineHeight: 1.8, marginBottom: 32 }}>
+          As the sole researcher and writer at Kreonic Lab, Henry also takes direct accountability for any corrections or clarifications. There is no editorial buffer — readers who find errors can contact him directly, and he will address them promptly.
+        </p>
+
+        {/* ── Section: LinkedIn Profile ── */}
+        <SectionHeading>Henry Igwe A. on LinkedIn</SectionHeading>
+        <p style={{ fontSize: 15, color: '#444', lineHeight: 1.8, marginBottom: 20 }}>
+          Henry maintains a professional presence on LinkedIn, where he shares updates related to Kreonic Lab, his academic journey, and his perspective on the technology industry. His LinkedIn profile is the most direct way to connect with him professionally — whether you are a journalist, researcher, recruiter, or someone who simply wants to follow his work.
+        </p>
+        <div style={{ background: '#f0f7ff', border: '1px solid #bfd7f0', padding: '20px 22px', marginBottom: 28, display: 'flex', alignItems: 'flex-start', gap: 16 }}>
+          <div style={{ flexShrink: 0, marginTop: 2 }}>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="#0A66C2">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z M4 2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z" />
+            </svg>
+          </div>
+          <div style={{ flex: 1 }}>
+            <p style={{ fontSize: 14, fontWeight: 800, color: '#111', margin: '0 0 4px' }}>Henry Igwe A. — LinkedIn Profile</p>
+            <p style={{ fontSize: 13, color: '#555', lineHeight: 1.6, margin: '0 0 12px' }}>
+              Connect with Henry on LinkedIn to follow his professional updates, engage with his research, or reach out about collaboration opportunities. His profile documents his role as founder of Kreonic Lab and reflects his areas of focus in technology research.
+            </p>
+            <a
+              href={WRITER.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 7,
+                padding: '8px 16px',
+                background: '#0A66C2',
+                color: '#fff',
+                textDecoration: 'none',
+                fontSize: 13,
+                fontWeight: 700,
+                borderRadius: 2,
+              }}
+              aria-label="Open Henry Igwe A.'s LinkedIn profile in a new tab"
+            >
+              <LinkedInIcon />
+              linkedin.com/in/henry-igwe-469146374
+            </a>
+          </div>
+        </div>
+
+        {/* ── Section: Why He Founded Kreonic Lab ── */}
+        <SectionHeading>Why Henry Founded Kreonic Lab</SectionHeading>
+        <p style={{ fontSize: 15, color: '#444', lineHeight: 1.8, marginBottom: 20 }}>
+          Kreonic Lab was founded because Henry identified a persistent problem in technology media: the most widely read publications tend to either over-simplify complex topics for mass appeal, or become so specialised that they are inaccessible to people entering the field. There was very little in between.
+        </p>
+        <p style={{ fontSize: 15, color: '#444', lineHeight: 1.8, marginBottom: 20 }}>
+          As a Computer Science student in Nigeria with a deep interest in how technology shapes careers, security, and innovation globally, Henry wanted to create a publication that treated its readers as intelligent adults — people who could handle nuance, data, and honest analysis delivered without hype or filler.
+        </p>
+        <p style={{ fontSize: 15, color: '#444', lineHeight: 1.8, marginBottom: 32 }}>
+          Kreonic Lab is also independent by design. Henry built it without external funding, editorial interference, or commercial pressure. This independence is intentional: it allows him to cover what matters without being accountable to advertisers or investors. Every article on Kreonic Lab reflects his genuine assessment of a topic — nothing more, nothing less.
+        </p>
+
+        {/* ── Section: FAQ ── */}
+        <SectionHeading>Frequently Asked Questions About the Founder</SectionHeading>
+        {[
+          {
+            q: 'Who is the founder of Kreonic Lab?',
+            a: 'Henry Igwe A. is the founder of Kreonic Lab. He established the publication independently and continues to run it as its sole researcher, writer, and owner.',
+          },
+          {
+            q: 'Who is the writer of Kreonic Lab?',
+            a: 'Henry Igwe A. is the sole writer of Kreonic Lab. Every article on the platform is researched and written by him personally.',
+          },
+          {
+            q: 'Who owns Kreonic Lab?',
+            a: 'Kreonic Lab is independently owned by Henry Igwe A. It has no corporate backing, external investors, or editorial board.',
+          },
+          {
+            q: 'Where is Henry Igwe A. based?',
+            a: 'Henry is based in Nigeria and is currently enrolled as a Computer Science undergraduate at the Federal University of Technology, Owerri (FUTO).',
+          },
+          {
+            q: 'How can I connect with Henry Igwe A.?',
+            a: 'You can connect with Henry via his LinkedIn profile (linked above) or reach Kreonic Lab by email at kreoniclab@gmail.com.',
+          },
+        ].map((item, i) => (
+          <div key={i} style={{ marginBottom: 20, paddingBottom: 20, borderBottom: i < 4 ? '1px solid #f0f0f0' : 'none' }}>
+            <p style={{ fontSize: 14, fontWeight: 800, color: '#111', margin: '0 0 7px' }}>Q: {item.q}</p>
+            <p style={{ fontSize: 14, color: '#555', lineHeight: 1.7, margin: 0 }}>A: {item.a}</p>
+          </div>
+        ))}
+
+        {/* ── CTA: About Kreonic Lab ── */}
+        <div style={{ background: '#111', color: '#fff', padding: '24px 24px', marginTop: 40 }}>
+          <p style={{ fontSize: 13, fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#aaa', margin: '0 0 8px' }}>
+            Learn More
+          </p>
+          <p style={{ fontSize: 18, fontWeight: 900, color: '#fff', margin: '0 0 8px' }}>
+            What is Kreonic Lab About?
+          </p>
+          <p style={{ fontSize: 14, color: '#bbb', lineHeight: 1.6, margin: '0 0 16px' }}>
+            Now that you know who founded Kreonic Lab, learn about the publication itself — its mission, editorial standards, and what it covers.
+          </p>
+          <Link
+            to="/about-kreonic-lab"
+            style={{
+              display: 'inline-block',
+              padding: '9px 20px',
+              background: '#fff',
+              color: '#111',
+              textDecoration: 'none',
+              fontSize: 13,
+              fontWeight: 800,
+            }}
+          >
+            Read: What is Kreonic Lab? →
+          </Link>
+        </div>
+
+        {/* ── Contact ── */}
+        <div style={{ marginTop: 48 }}>
+          <SectionHeading>Contact Henry Igwe A.</SectionHeading>
+          <p style={{ fontSize: 15, color: '#444', lineHeight: 1.75, marginBottom: 8 }}>
+            For story tips, corrections, collaborations, or general enquiries:
+          </p>
+          <p style={{ fontSize: 15, color: '#111', fontWeight: 700 }}>
+            <a href="mailto:kreoniclab@gmail.com" style={{ color: '#111' }}>kreoniclab@gmail.com</a>
+          </p>
+          <p style={{ fontSize: 14, color: '#888', lineHeight: 1.6, marginTop: 8 }}>
+            You can also reach Henry directly via his{' '}
+            <a
+              href={WRITER.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: '#0A66C2', fontWeight: 600, textDecoration: 'none' }}
+            >
+              LinkedIn profile
+            </a>
+            .
+          </p>
+        </div>
+
+      </div>
+    </>
+  );
+}
